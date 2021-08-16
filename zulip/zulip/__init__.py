@@ -951,6 +951,10 @@ class Client:
         )
 
     def get_realm_emoji(self) -> Dict[str, Any]:
+        logger.warning("get_realm_emoji() is deprecated." " Please use get_custom_emoji() instead.")
+        return self.get_custom_emoji()
+
+    def get_custom_emoji(self) -> Dict[str, Any]:
         """
         See examples/realm-emoji for example usage.
         """
@@ -978,6 +982,12 @@ class Client:
         )
 
     def get_realm_linkifiers(self) -> Dict[str, Any]:
+        logger.warning(
+            "get_realm_linkifiers() is deprecated." " Please use get_linkifiers() instead."
+        )
+        return self.get_linkifiers()
+
+    def get_linkifiers(self) -> Dict[str, Any]:
         """
         Example usage:
 
@@ -1000,6 +1010,10 @@ class Client:
         )
 
     def add_realm_filter(self, pattern: str, url_format_string: str) -> Dict[str, Any]:
+        logger.warning("get_members() is deprecated." " Please use get_users() instead.")
+        return self.add_linkifier(pattern, url_format_string)
+
+    def add_linkifier(self, pattern: str, url_format_string: str) -> Dict[str, Any]:
         """
         Example usage:
 
@@ -1016,6 +1030,12 @@ class Client:
         )
 
     def remove_realm_filter(self, filter_id: int) -> Dict[str, Any]:
+        logger.warning(
+            "remove_realm_filter() is deprecated." " Please use remove_linkifier() instead."
+        )
+        return self.remove_linkifier(filter_id)
+
+    def remove_linkifier(self, filter_id: int) -> Dict[str, Any]:
         """
         Example usage:
 
@@ -1028,6 +1048,13 @@ class Client:
         )
 
     def get_realm_profile_fields(self) -> Dict[str, Any]:
+        logger.warning(
+            "get_realm_profile_fields() is deprecated."
+            " Please use get_custom_profile_fields() instead."
+        )
+        return self.get_custom_profile_fields()
+
+    def get_custom_profile_fields(self) -> Dict[str, Any]:
         """
         Example usage:
 
@@ -1040,6 +1067,13 @@ class Client:
         )
 
     def create_realm_profile_field(self, **request: Any) -> Dict[str, Any]:
+        logger.warning(
+            "create_realm_profile_field() is deprecated."
+            " Please use create_custom_profile_field() instead."
+        )
+        return self.create_custom_profile_field(**request)
+
+    def create_custom_profile_field(self, **request: Any) -> Dict[str, Any]:
         """
         Example usage:
 
@@ -1065,6 +1099,13 @@ class Client:
         )
 
     def reorder_realm_profile_fields(self, **request: Any) -> Dict[str, Any]:
+        logger.warning(
+            "reorder_realm_profile_fields() is deprecated."
+            " Please use reorder_custom_profile_fields() instead."
+        )
+        return self.reorder_custom_profile_fields(**request)
+
+    def reorder_custom_profile_fields(self, **request: Any) -> Dict[str, Any]:
         """
         Example usage:
 
@@ -1078,6 +1119,12 @@ class Client:
         )
 
     def update_realm_profile_field(self, field_id: int, **request: Any) -> Dict[str, Any]:
+        logger.warning(
+            "update_realm_profile_field() is deprecated." " Please use update_linkifier() instead."
+        )
+        return self.update_linkifier(field_id, **request)
+
+    def update_linkifier(self, field_id: int, **request: Any) -> Dict[str, Any]:
         """
         Example usage:
 
@@ -1119,6 +1166,15 @@ class Client:
         narrow: Optional[List[List[str]]] = None,
         **kwargs: object,
     ) -> Dict[str, Any]:
+        logger.warning("register() is deprecated." " Please use register_queue() instead.")
+        return self.register_queue(event_types, narrow, **kwargs)
+
+    def register_queue(
+        self,
+        event_types: Optional[Iterable[str]] = None,
+        narrow: Optional[List[List[str]]] = None,
+        **kwargs: object,
+    ) -> Dict[str, Any]:
         """
         Example usage:
 
@@ -1139,6 +1195,10 @@ class Client:
         )
 
     def deregister(self, queue_id: str, timeout: Optional[float] = None) -> Dict[str, Any]:
+        logger.warning("deregister() is deprecated." " Please use delete_queue() instead.")
+        return self.delete_queue(queue_id, timeout)
+
+    def delete_queue(self, queue_id: str, timeout: Optional[float] = None) -> Dict[str, Any]:
         """
         Example usage:
 
@@ -1157,6 +1217,10 @@ class Client:
         )
 
     def get_profile(self, request: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+        logger.warning("get_profile() is deprecated." " Please use get_own_user() instead.")
+        return self.get_own_user(request)
+
+    def get_own_user(self, request: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         """
         Example usage:
 
@@ -1232,6 +1296,10 @@ class Client:
         )
 
     def delete_stream(self, stream_id: int) -> Dict[str, Any]:
+        logger.warning("delete_stream() is deprecated." " Please use archive_stream() instead.")
+        return self.archive_stream(stream_id)
+
+    def archive_stream(self, stream_id: int) -> Dict[str, Any]:
         """
         See examples/delete-stream for example usage.
         """
@@ -1255,6 +1323,10 @@ class Client:
         )
 
     def get_user_by_id(self, user_id: int, **request: Any) -> Dict[str, Any]:
+        logger.warning("get_user_by_id() is deprecated." " Please use get_user() instead.")
+        return self.get_user(user_id, **request)
+
+    def get_user(self, user_id: int, **request: Any) -> Dict[str, Any]:
 
         """
         Example usage:
@@ -1269,6 +1341,12 @@ class Client:
         )
 
     def deactivate_user_by_id(self, user_id: int) -> Dict[str, Any]:
+        logger.warning(
+            "deactivate_user_by_id() is deprecated." " Please use deactivate_user() instead."
+        )
+        return self.deactivate_user(user_id)
+
+    def deactivate_user(self, user_id: int) -> Dict[str, Any]:
 
         """
         Example usage:
@@ -1282,6 +1360,12 @@ class Client:
         )
 
     def reactivate_user_by_id(self, user_id: int) -> Dict[str, Any]:
+        logger.warning(
+            "reactivate_user_by_id() is deprecated." " Please use reactivate_user() instead."
+        )
+        return self.reactivate_user(user_id)
+
+    def reactivate_user(self, user_id: int) -> Dict[str, Any]:
 
         """
         Example usage:
@@ -1295,6 +1379,10 @@ class Client:
         )
 
     def update_user_by_id(self, user_id: int, **request: Any) -> Dict[str, Any]:
+        logger.warning("update_user_by_id() is deprecated." " Please use update_user() instead.")
+        return self.update_user(user_id, **request)
+
+    def update_user(self, user_id: int, **request: Any) -> Dict[str, Any]:
 
         """
         Example usage:
@@ -1321,8 +1409,7 @@ class Client:
     def get_members(self, request: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         # This exists for backwards-compatibility; we renamed this
         # function get_users for consistency with the rest of the API.
-        # Later, we may want to add a warning for clients using this
-        # legacy name.
+        logger.warning("get_members() is deprecated." " Please use get_users() instead.")
         return self.get_users(request=request)
 
     def get_alert_words(self) -> Dict[str, Any]:
@@ -1364,6 +1451,10 @@ class Client:
         return self.get_subscriptions(request)
 
     def add_subscriptions(self, streams: Iterable[Dict[str, Any]], **kwargs: Any) -> Dict[str, Any]:
+        logger.warning("add_subscriptions() is deprecated." " Please use subscribe() instead.")
+        return self.subscribe(streams, **kwargs)
+
+    def subscribe(self, streams: Iterable[Dict[str, Any]], **kwargs: Any) -> Dict[str, Any]:
         """
         See examples/subscribe for example usage.
         """
@@ -1375,6 +1466,12 @@ class Client:
         )
 
     def remove_subscriptions(
+        self, streams: Iterable[str], principals: Union[Sequence[str], Sequence[int]] = []
+    ) -> Dict[str, Any]:
+        logger.warning("remove_subscriptions() is deprecated." " Please use unsubscribe() instead.")
+        return self.unsubscribe(streams, principals)
+
+    def unsubscribe(
         self, streams: Iterable[str], principals: Union[Sequence[str], Sequence[int]] = []
     ) -> Dict[str, Any]:
         """
